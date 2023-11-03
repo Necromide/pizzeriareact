@@ -26,12 +26,30 @@ function App() {
                 <h1>Codebasis Musterpizzeria</h1>
                 <p>Musterstraße 123, 12345 Musterstadt</p>
             </header>
+
+            <Navigation />
+
             <Speisekarte addToCart={addItemToCart} />
             <Cart cart={cart} removeItem={removeItemFromCart} />
+
             <footer>
                 © 2023 Codebasis Musterpizzeria - Alle Rechte vorbehalten.
             </footer>
         </div>
+    );
+}
+
+const Navigation: React.FC = () => {
+    return (
+        <nav>
+            <ul>
+                <li>Startseite</li>
+                <li>Speisekarte</li>
+                <li>Bäcker</li>
+                <li>Lieferant</li>
+                <li>Kontakt</li>
+            </ul>
+        </nav>
     );
 }
 
