@@ -1,71 +1,43 @@
-import React, { useState } from 'react';
-import './App.css';
-import Speisekarte from './klassen/speisekarte';
+// App.jsx
 
-type PizzaItem = 'Salami' | 'Vegetarisch' | 'Spinat-Hühnchen';
+import React from 'react';
+import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
+import Kontakt from './klassen/kontakt'; // Angenommen, Ihre Kontakt-Komponente befindet sich in './Kontakt'
+import Home from './klassen/home'; // Angenommen, Ihre Home-Komponente befindet sich in './Home'
+import './App.css'; // Ihr CSS-Stylesheet
 
-interface CartProps {
-    cart: PizzaItem[];
-    removeItem: (item: PizzaItem) => void;
-}
-
-function App() {
-    const [cart, setCart] = useState<PizzaItem[]>([]);
-
-    const addItemToCart = (item: PizzaItem) => {
-        setCart([...cart, item]);
-    };
-
-    const removeItemFromCart = (itemToRemove: PizzaItem) => {
-        setCart(cart.filter(item => item !== itemToRemove));
-    };
-
+const App = () => {
     return (
-        <div>
-            <header>
-                <h1>Codebasis Musterpizzeria</h1>
-                <p>Musterstraße 123, 12345 Musterstadt</p>
-            </header>
-
-            <Navigation />
-
-            <Speisekarte addToCart={addItemToCart} />
-            <Cart cart={cart} removeItem={removeItemFromCart} />
-
-            <footer>
-                © 2023 Codebasis Musterpizzeria - Alle Rechte vorbehalten.
-            </footer>
-        </div>
+        <Router>
+            <div>
+                <header>
+                    <h1>Codebasis Musterpizzeria</h1>
+                    <p>Musterstraße 123, 12345 Musterstadt</p>
+                    <nav>
+                        <ul>
+                            <li><Link to="/">Startseite</Link></li>
+                            <li><Link to="/speisekarte">Speisekarte</Link></li>
+                            <li><Link to="/baecker">Bäcker</Link></li>
+                            <li><Link to="/lieferant">Lieferant</Link></li>
+                            <li><Link to="/kontakt">Kontakt</Link></li>
+                        </ul>
+                    </nav>
+                </header>
+                <main>
+                    <Routes>
+                        <Route path="/" element={<Home />} />
+                        <Route path="/speisekarte" element={<div>Speisekarte Inhalt</div>} />
+                        <Route path="/baecker" element={<div>Bäcker Inhalt</div>} />
+                        <Route path="/lieferant" element={<div>Lieferant Inhalt</div>} />
+                        <Route path="/kontakt" element={<Kontakt />} />
+                    </Routes>
+                </main>
+                <footer>
+                    <p>© 2023 Codebasis Musterpizzeria - Alle Rechte vorbehalten.</p>
+                </footer>
+            </div>
+        </Router>
     );
-}
-
-const Navigation: React.FC = () => {
-    return (
-        <nav>
-            <ul>
-                <li>Startseite</li>
-                <li>Speisekarte</li>
-                <li>Bäcker</li>
-                <li>Lieferant</li>
-                <li>Kontakt</li>
-            </ul>
-        </nav>
-    );
-}
-
-const Cart: React.FC<CartProps> = ({ cart, removeItem }) => {
-    return (
-        <section>
-            <h2>Ihr Warenkorb</h2>
-            {cart.map((item, index) => (
-                <div key={index}>
-                    {item} x1
-                    <button onClick={() => removeItem(item)}>Entfernen</button>
-                </div>
-            ))}
-            <p>Gesamtpreis: {/* Hier müsste die Preislogik implementiert werden */}€</p>
-        </section>
-    );
-}
+};
 
 export default App;

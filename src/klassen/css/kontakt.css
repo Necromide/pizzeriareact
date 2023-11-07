@@ -1,0 +1,21 @@
+/* Container für das Formular zentrieren */
+.kontakt-formular {
+    display: flex;        /* Flex-Container einrichten */
+    flex-direction: column; /* Elemente vertikal anordnen */
+    align-items: center;  /* Horizontale Zentrierung der Elemente */
+    justify-content: center; /* Vertikale Zentrierung, falls benötigt */
+    width: 100%;         /* Die Breite des Formulars (kann angepasst werden) */
+}
+
+/* Stil für einzelne Formularelemente */
+.kontakt-formular label,
+.kontakt-formular input,
+.kontakt-formular textarea,
+.kontakt-formular button {
+    margin-bottom: 0.5rem;
+}
+
+/* Optional: Abstand von oben für das gesamte Formular */
+.kontakt-formular {
+    margin-top: 20px; /* Oder ein anderer Wert nach Wunsch */
+}
