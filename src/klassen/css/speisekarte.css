@@ -1,0 +1,5 @@
+/* in Ihrer CSS-Datei */
+.pizza img {
+    width: 200px; /* oder eine andere gewünschte Breite */
+    height: auto;
+}
