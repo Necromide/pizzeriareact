@@ -1,11 +1,9 @@
 import React, { useState } from 'react';
-// Import der CSS-Datei und Bilder
 import './css/speisekarte.css';
 import salamiImage from './images/salami.jpg';
 import vegetarischImage from './images/vegetarisch.jpg';
 import spinatHuhnImage from './images/spinat.jpg';
 
-// Definieren eines Typs für die Pizza
 interface Pizza {
     id: number;
     name: string;
@@ -13,12 +11,10 @@ interface Pizza {
     image: string;
 }
 
-// Definieren eines Typs für die Pizza im Warenkorb, welche zusätzlich eine uniqueId hat
 interface PizzaInCart extends Pizza {
     uniqueId: number;
 }
 
-// Die Pizzen Array
 const pizzas: Pizza[] = [
     { id: 1, name: 'Salami', price: 8.49, image: salamiImage },
     { id: 2, name: 'Vegetarisch', price: 10.99, image: vegetarischImage },
@@ -46,17 +42,19 @@ const Speisekarte: React.FC = () => {
     return (
         <div>
             <h1>Unsere Speisekarte</h1>
-            {pizzas.map(pizza => (
-                <div key={pizza.id} className="pizza">
-                    <img src={pizza.image} alt={`${pizza.name} Pizza`} className="pizza-img" />
-                    <h2>{pizza.name}</h2>
-                    <p>Preis: {pizza.price}€</p>
-                    <button onClick={() => addToCart(pizza)}>In den Warenkorb</button>
-                </div>
-            ))}
+            <div className="pizzas-container">
+                {pizzas.map(pizza => (
+                    <div key={pizza.id} className="pizza">
+                        <img src={pizza.image} alt={`${pizza.name} Pizza`} className="pizza-img" />
+                        <h2>{pizza.name}</h2>
+                        <p>Preis: {pizza.price}€</p>
+                        <button onClick={() => addToCart(pizza)}>In den Warenkorb</button>
+                    </div>
+                ))}
+            </div>
 
             <h2>Ihr Warenkorb</h2>
-            <div>
+            <div className="warenkorb">
                 {warenkorb.length === 0 && <p>Ihr Warenkorb ist leer.</p>}
                 {warenkorb.map(pizza => (
                     <div key={pizza.uniqueId}>
@@ -66,8 +64,14 @@ const Speisekarte: React.FC = () => {
                 ))}
                 <div><strong>Gesamtpreis:</strong> {gesamtpreis.toFixed(2)}€</div>
             </div>
-
-            {/* ...weitere Komponenten oder Elemente wie Adresse und Bestellformular */}
+            <div className="bestellformular">
+                <h2>Bestellung abschließen</h2>
+                <form>
+                    <label htmlFor="adresse">Adresse:</label>
+                    <input type="text" id="adresse" name="adresse" required />
+                    <button type="submit">Bestellung abschließen</button>
+                </form>
+            </div>
         </div>
     );
 };

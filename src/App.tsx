@@ -5,6 +5,8 @@ import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
 import Kontakt from './klassen/kontakt'; // Angenommen, Ihre Kontakt-Komponente befindet sich in './Kontakt'
 import Home from './klassen/home'; // Angenommen, Ihre Home-Komponente befindet sich in './Home'
 import Speisekarte from "./klassen/speisekarte";
+import Baecker from "./klassen/baecker";
+import Lieferant from "./klassen/lieferant";
 import './App.css';
 
 const App = () => {
@@ -28,8 +30,8 @@ const App = () => {
                     <Routes>
                         <Route path="/" element={<Home />} />
                         <Route path="/speisekarte" element={<Speisekarte />} />
-                        <Route path="/baecker" element={<div>Bäcker Inhalt</div>} />
-                        <Route path="/lieferant" element={<div>Lieferant Inhalt</div>} />
+                        <Route path="/baecker" element={<Baecker/>} />
+                        <Route path="/lieferant" element={<Lieferant/>} />
                         <Route path="/kontakt" element={<Kontakt />} />
                     </Routes>
                 </main>
