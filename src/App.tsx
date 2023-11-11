@@ -2,8 +2,8 @@
 
 import React from 'react';
 import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
-import Kontakt from './klassen/kontakt'; // Angenommen, Ihre Kontakt-Komponente befindet sich in './Kontakt'
-import Home from './klassen/home'; // Angenommen, Ihre Home-Komponente befindet sich in './Home'
+import Kontakt from './klassen/kontakt';
+import Home from './klassen/home';
 import Speisekarte from "./klassen/speisekarte";
 import Baecker from "./klassen/baecker";
 import Lieferant from "./klassen/lieferant";
